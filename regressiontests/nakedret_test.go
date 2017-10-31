@@ -6,18 +6,24 @@ func TestNakedret(t *testing.T) {
 	t.Parallel()
 	source := `package test
 
-	func hi() (uint32, error) {
-//
-//
-//
-//
-//
-//
+	func shortFunc() (r uint32) {
+		r = r + r
 		return
 	}
+	
+	func longFunc() (r uint32) {
+		r = r + r
+		r = r - r
+		r = r * r
+		r = r / r
+		r = r % r
+		r = r^r
+		r = r&r
+		return
+	}	
 `
 	expected := Issues{
-		{Linter: "nakedret", Severity: "warning", Path: "test.go", Line: 3, Col: 16, Message: "struct of size 24 could be 16"},
+		{Linter: "nakedret", Severity: "warning", Path: "test.go", Line: 16, Message: "longFunc naked returns on 9 line function "},
 	}
 	ExpectIssues(t, "nakedret", source, expected)
 }

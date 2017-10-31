@@ -333,9 +333,9 @@ var defaultLinters = map[string]LinterConfig{
 	},
 	"nakedret": {
 		Command:           `nakedret`,
-		Pattern:           `^$`,
+		Pattern:           `^(?P<path>.*?\.go):(?P<line>\d+)\s*(?P<message>.*)$`,
 		InstallFrom:       "github.com/alexkohler/nakedret",
-		PartitionStrategy: partitionPathsAsPackages,
+		PartitionStrategy: partitionPathsAsDirectories,
 	},
 	"safesql": {
 		Command:           `safesql`,
