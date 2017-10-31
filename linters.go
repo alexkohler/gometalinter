@@ -333,7 +333,7 @@ var defaultLinters = map[string]LinterConfig{
 	},
 	"nakedret": {
 		Command:           `nakedret`,
-		Pattern:           `PATH:LINE:COL:MESSAGE`,
+		Pattern:           `^$`,
 		InstallFrom:       "github.com/alexkohler/nakedret",
 		PartitionStrategy: partitionPathsAsPackages,
 	},
